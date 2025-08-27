@@ -5,65 +5,118 @@ import { motion } from 'framer-motion'
 interface HiveLogoProps {
   size?: number
   className?: string
+  animate?: boolean
 }
 
-export function HiveLogo({ size = 40, className = "" }: HiveLogoProps) {
+export function HiveLogo({ size = 40, className = "", animate = true }: HiveLogoProps) {
+  const hexagonPath = "M12 2l10 6v12L12 26 2 20V8l10-6z"
+  
   return (
-    <motion.div 
+    <motion.div
       className={`relative ${className}`}
-      whileHover={{ scale: 1.05 }}
-      transition={{ duration: 0.2 }}
+      style={{ width: size, height: size }}
+      animate={animate ? { rotate: 360 } : {}}
+      transition={animate ? { duration: 20, repeat: Infinity, ease: "linear" } : {}}
     >
       <svg
         width={size}
         height={size}
-        viewBox="0 0 100 100"
-        className="drop-shadow-lg"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="drop-shadow-sm"
       >
-        {/* Outer hexagon */}
+        {/* Outer Hexagon */}
         <motion.path
-          d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z"
-          fill="none"
+          d="M12 2l9 5.2v10.6L12 23l-9-5.2V7.2L12 2z"
+          fill="url(#hiveGradient1)"
           stroke="#EA580C"
-          strokeWidth="3"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, ease: "easeInOut" }}
+          strokeWidth="0.5"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         />
         
-        {/* Inner hexagon cells */}
+        {/* Inner Hexagon Pattern */}
         <motion.path
-          d="M50 15 L70 27.5 L70 52.5 L50 65 L30 52.5 L30 27.5 Z"
-          fill="#FB923C"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
+          d="M12 5l6 3.5v7L12 19l-6-3.5v-7L12 5z"
+          fill="url(#hiveGradient2)"
+          stroke="#F97316"
+          strokeWidth="0.3"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         />
         
-        {/* Small hexagon cells */}
+        {/* Center Hexagon */}
         <motion.path
-          d="M35 35 L45 41 L45 51 L35 57 L25 51 L25 41 Z"
+          d="M12 8l3 1.7v3.6L12 16l-3-1.7V10.7L12 8z"
+          fill="url(#hiveGradient3)"
+          stroke="#FB923C"
+          strokeWidth="0.2"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        />
+        
+        {/* Honeycomb Cells */}
+        <motion.circle
+          cx="8"
+          cy="10"
+          r="1.5"
           fill="#FDBA74"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
+          opacity="0.8"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.7 }}
         />
-        
-        <motion.path
-          d="M65 35 L75 41 L75 51 L65 57 L55 51 L55 41 Z"
+        <motion.circle
+          cx="16"
+          cy="10"
+          r="1.5"
           fill="#FDBA74"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
+          opacity="0.8"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
+        />
+        <motion.circle
+          cx="8"
+          cy="14"
+          r="1.5"
+          fill="#FDBA74"
+          opacity="0.8"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.9 }}
+        />
+        <motion.circle
+          cx="16"
+          cy="14"
+          r="1.5"
+          fill="#FDBA74"
+          opacity="0.8"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.4, delay: 1.0 }}
         />
         
-        <motion.path
-          d="M50 25 L60 31 L60 41 L50 47 L40 41 L40 31 Z"
-          fill="#FED7AA"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.5 }}
-        />
+        {/* Gradient Definitions */}
+        <defs>
+          <linearGradient id="hiveGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#F97316" />
+            <stop offset="50%" stopColor="#FB923C" />
+            <stop offset="100%" stopColor="#FDBA74" />
+          </linearGradient>
+          <linearGradient id="hiveGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#FB923C" />
+            <stop offset="100%" stopColor="#FDBA74" />
+          </linearGradient>
+          <linearGradient id="hiveGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#FDBA74" />
+            <stop offset="100%" stopColor="#FED7AA" />
+          </linearGradient>
+        </defs>
       </svg>
     </motion.div>
   )

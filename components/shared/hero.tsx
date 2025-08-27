@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { ArrowRight, Play, Zap, Brain, Users } from 'lucide-react'
+import { ArrowRight, Play, Zap, Brain, Users, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { HiveLogo } from '@/components/ui/hive-logo'
@@ -15,7 +15,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 via-white to-amber-50 pt-16 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-hive-gradient-subtle pt-16 overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         {[...Array(20)].map((_, i) => (
@@ -40,7 +40,7 @@ export function Hero() {
               delay: Math.random() * 5
             }}
           >
-            <div className="w-2 h-2 bg-orange-200 rounded-full opacity-30" />
+            <div className="w-2 h-2 bg-hive-300 rounded-full opacity-40" />
           </motion.div>
         ))}
       </div>
@@ -59,9 +59,9 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center px-4 py-2 rounded-full bg-orange-100 text-orange-800 text-sm font-medium mb-6"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-hive-100 text-hive-800 text-sm font-medium mb-6 shadow-sm"
             >
-              <Zap className="w-4 h-4 mr-2" />
+              <Sparkles className="w-4 h-4 mr-2" />
               AI-Powered Enterprise Automation
             </motion.div>
 
@@ -72,7 +72,7 @@ export function Hero() {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6"
             >
-              <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">
+              <span className="text-hive-gradient">
                 HiveAI
               </span>
               <br />
@@ -80,7 +80,7 @@ export function Hero() {
               <br />
               <span className="text-gray-600">Agents Automating</span>
               <br />
-              <span className="text-orange-600">Your Workflow</span>
+              <span className="text-hive-600">Your Workflow</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -103,7 +103,7 @@ export function Hero() {
               <Link href="/agents">
                 <Button 
                   size="lg"
-                  className="bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-700 hover:to-orange-600 text-white px-8 py-4 text-lg group"
+                  className="btn-hive-primary px-8 py-4 text-lg group"
                 >
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -112,7 +112,7 @@ export function Hero() {
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-orange-300 text-orange-700 hover:bg-orange-50 px-8 py-4 text-lg group"
+                className="btn-hive-secondary px-8 py-4 text-lg group"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Request Demo
@@ -127,11 +127,11 @@ export function Hero() {
               className="flex items-center space-x-8 text-sm text-gray-600"
             >
               <div className="flex items-center">
-                <Users className="h-4 w-4 mr-1 text-orange-600" />
+                <Users className="h-4 w-4 mr-1 text-hive-600" />
                 <span>500+ Enterprises</span>
               </div>
               <div className="flex items-center">
-                <Brain className="h-4 w-4 mr-1 text-orange-600" />
+                <Brain className="h-4 w-4 mr-1 text-hive-600" />
                 <span>1M+ Tasks Automated</span>
               </div>
             </motion.div>
@@ -166,7 +166,7 @@ export function Hero() {
                   initial={{ opacity: 0, scale: 0, rotate: -180 }}
                   animate={{ opacity: 1, scale: 1, rotate: 0 }}
                   transition={{ delay: card.delay, duration: 0.8 }}
-                  className={`absolute ${card.position} w-32 h-24 bg-white rounded-lg shadow-lg p-3 border border-orange-100`}
+                  className={`absolute ${card.position} w-32 h-24 card-hive p-3`}
                 >
                   <div className="text-2xl mb-1">{card.icon}</div>
                   <div className="text-xs font-medium text-gray-700">{card.text}</div>
